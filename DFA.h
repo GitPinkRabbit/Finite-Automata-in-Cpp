@@ -2,8 +2,8 @@
 // 2021-09-02
 // An efficient DFA class implement
 
-#ifndef __DFA_PINKRABBIT__
-#define __DFA_PINKRABBIT__
+#ifndef DFA_H__PINKRABBIT
+#define DFA_H__PINKRABBIT
 
 #include <cstdio>
 #include <cstdlib>
