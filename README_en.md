@@ -1,4 +1,4 @@
-# Finite-Automata-in-Cpp
+## Finite Automata in Cpp
 
 Some C++ Libraries of Finite Automata 
 
