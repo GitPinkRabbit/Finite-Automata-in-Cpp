@@ -1,5 +1,5 @@
 // PinkRabbit
-// 2021-09-02
+// 2022-04-22
 // An efficient DFA class implement
 
 #ifndef DFA_H__PINKRABBIT
@@ -420,12 +420,13 @@ private:
 			for (int j = 0; j < m; ++j) {
 				for (int u : invTr[x][j]) {
 					for (int v : invTr[y][j]) {
-						if (u < v)
-							std::swap(u, v);
-						if (distinguishable[u][v])
+						int tu = u, tv = v;
+						if (tu < tv)
+							std::swap(tu, tv);
+						if (distinguishable[tu][tv])
 							continue;
-						distinguishable[u][v] = 1u;
-						que[tail++] = {u, v};
+						distinguishable[tu][tv] = 1u;
+						que[tail++] = {tu, tv};
 					}
 				}
 			}
@@ -533,7 +534,7 @@ private:
 					int jd = Split(id, classSplitElems[id]);
 					for (int j = 0; j < m; ++j) {
 						int Xid = jd;
-						if (!inStack[jd][j])
+						if (!inStack[id][j])
 							Xid = classSize[id] < classSize[jd] ? id : jd;
 						splitterStack[stackTop++] = {Xid, j};
 						inStack[Xid][j] = 1u;
@@ -634,7 +635,7 @@ public:
 		for (int i = 0; i < newSize; ++i) {
 			int u = represent[i];
 			for (int j = 0; j < m; ++j) {
-				int v = transitions[u][j];
+				int v = A.transitions[u][j];
 				ret.transitions[i][j] = eqv[v];
 			}
 		}
